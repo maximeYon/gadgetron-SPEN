@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <version>2</version>
+
+    <readers>
+        <reader>
+            <dll>gadgetron_core_readers</dll>
+            <classname>AcquisitionReader</classname>
+        </reader>
+        <reader>
+            <dll>gadgetron_core_readers</dll>
+            <classname>WaveformReader</classname>
+        </reader>
+    </readers>
+
+    <writers>
+        <writer>
+            <dll>gadgetron_core_writers</dll>
+            <classname>ImageWriter</classname>
+        </writer>
+    </writers>
+
+    <stream>
+
+  <!-- <gadget>
+           <dll>gadgetron_mricore</dll>
+           <classname>NoiseAdjustGadget</classname>
+       </gadget> -->
+
+    <gadget>
+          <name>RemoveNavigationData</name>
+          <dll>gadgetron_mricore</dll>
+      <classname>RemoveNavigationDataGadget</classname>
+   </gadget>
+
+<!--This gadget perform the reggrinding of the readout and a FFT -->
+        <gadget>
+            <name>ReconX</name>
+            <dll>gadgetron_epi</dll>
+            <classname>EPIReconXGadget</classname>
+          </gadget>
+
+<!-- FFT in X back to k -->
+    	<gadget>
+       	     <name>FFTX</name>
+       	    <dll>gadgetron_epi</dll>
+       	    <classname>FFTXGadget</classname>
+         </gadget>
+
+        <gadget>
+            <dll>gadgetron_mricore</dll>
+            <classname>RemoveROOversamplingGadget</classname>
+        </gadget> 
+
+<!-- This gadget change the Tags to have the EPI segments as repetitions and / the sets by the number of segments -->
+   <gadget>
+      <name>ChangeTagsGadget</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>ChangeTagsGadget</classname>
+    </gadget> 
+
+ <!-- <gadget>
+      <name>GiveInformation</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>GiveInformationGadget</classname>
+    </gadget> -->
+
+       <gadget>
+            <dll>gadgetron_mricore</dll>
+            <classname>AcquisitionAccumulateTriggerGadget</classname>
+            <property name="trigger_dimension" value="set"/>
+        </gadget> 
+
+        <gadget>
+            <dll>gadgetron_mricore</dll>
+            <classname>BucketToBufferGadget</classname>
+            <property name="N_dimension" value="repetition"/>
+	    <property name="S_dimension" value="set"/>
+	    <property name="split_slices" value="false"/>
+	    <property name="ignore_segment" value="true"/>
+	    <property name="verbose" value="true"/>
+        </gadget>
+
+       <!--<external> -->
+            <!-- Connect to a running process on port 18000. -->
+           <!--<connect port="18000"/> -->
+
+            <!-- The configuration is sent to the external process. It's left pretty empty here. -->
+           <!--<configuration/>
+        </external> -->
+
+         <external>
+            <execute name="gadgetron.examples.buffer_recon_SPEN" type="matlab"/>
+            <configuration/>
+        </external> 
+    </stream>
+</configuration>

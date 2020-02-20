@@ -67,7 +67,10 @@ set(gadgetron_mricore_header_files GadgetMRIHeaders.h
         ImageAccumulatorGadget.h
         writers/GadgetIsmrmrdWriter.h
         ImageResizingGadget.h
-        DenoiseGadget.h)
+        DenoiseGadget.h
+	GiveInformationGadget.h
+	ChangeTagsGadget.h
+	RemoveNavigationDataGadget.h)
 
 set(gadgetron_mricore_src_files
         AcquisitionPassthroughGadget.cpp
@@ -129,7 +132,10 @@ set(gadgetron_mricore_src_files
         writers/GadgetIsmrmrdWriter.cpp
         ImageResizingGadget.cpp
         AutoScaleGadget.cpp
-        DenoiseGadget.cpp)
+        DenoiseGadget.cpp
+	GiveInformationGadget.cpp
+	ChangeTagsGadget.cpp
+	RemoveNavigationDataGadget.cpp)
 
 set(gadgetron_mricore_config_files
         config/default.xml
