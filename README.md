@@ -1,5 +1,5 @@
-GADGETRON IMAGE RECONSTRUCTION FRAMEWORK
-=========================================
+GADGETRON IMAGE RECONSTRUCTION FRAMEWORK SPEN VERSION
+=======================================================
 
 Detailed installation instructions and manual is available at:
 
