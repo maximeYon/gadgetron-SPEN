@@ -48,5 +48,5 @@ target_link_libraries(
 )
 install(TARGETS gadgetron_matlab DESTINATION lib COMPONENT main)
 install(FILES MatlabGadget.h gadgetron_matlab_export.h DESTINATION ${GADGETRON_INSTALL_INCLUDE_PATH} COMPONENT main)
-install(FILES BaseGadget.m BaseBufferGadget.m bufferRecon.m scale.m accumulate_and_recon.m mask_image.m recon.m trajectoryScale.m IDEAL.m DESTINATION ${GADGETRON_INSTALL_MATLAB_PATH} COMPONENT main)
-install(FILES matlab.xml matlabbuffer.xml matlabnoncartesian.xml matlab_ideal_cg.xml DESTINATION ${GADGETRON_INSTALL_CONFIG_PATH} COMPONENT main)
+install(FILES BaseGadget.m BaseBufferGadget.m bufferRecon.m scale.m accumulate_and_recon.m mask_image.m recon.m trajectoryScale.m IDEAL.m SPEN_bufferRecon.m DESTINATION ${GADGETRON_INSTALL_MATLAB_PATH} COMPONENT main)
+install(FILES matlab.xml matlabbuffer.xml matlabnoncartesian.xml matlab_ideal_cg.xml SPEN_matlab.xml DESTINATION ${GADGETRON_INSTALL_CONFIG_PATH} COMPONENT main)

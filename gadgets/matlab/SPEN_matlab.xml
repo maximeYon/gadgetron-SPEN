@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gadgetronStreamConfiguration xsi:schemaLocation="http://gadgetron.sf.net/gadgetron gadgetron.xsd"
+			      xmlns="http://gadgetron.sf.net/gadgetron"
+			      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <reader>
+    <slot>1008</slot>
+    <dll>gadgetron_mricore</dll>
+    <classname>GadgetIsmrmrdAcquisitionMessageReader</classname>
+  </reader>
+    <reader>
+        <slot>1026</slot>
+        <dll>gadgetron_mricore</dll>
+        <classname>GadgetIsmrmrdWaveformMessageReader</classname>
+    </reader>
+
+  <writer>
+    <slot>1022</slot>
+    <dll>gadgetron_mricore</dll>
+    <classname>MRIImageWriter</classname>
+  </writer>
+
+<!--<gadget>
+      <name>GiveSizeData</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>GiveSizeDataGadget</classname>
+    </gadget> -->
+
+
+    <gadget>
+      <name>RemoveNavigationData</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>RemoveNavigationDataGadget</classname>
+    </gadget>
+
+<!-- 3 Gadgets used to perform coil compression (v2)-->
+<!-- <gadget>
+      <name>NoiseAdjust</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>NoiseAdjustGadget</classname>
+    </gadget>
+
+   <gadget>
+      <name>PCA</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>PCACoilGadget</classname>
+    </gadget>
+
+    <gadget>
+      <name>CoilReduction</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>CoilReductionGadget</classname>
+      <property><name>coils_out</name><value>3</value></property>
+    </gadget>  -->
+
+<!-- This gadget perform the reggrinding of the readout and a FFT-->
+    <gadget>
+      <name>ReconX</name>
+      <dll>gadgetron_epi</dll>
+      <classname>EPIReconXGadget</classname>
+    </gadget>
+
+    <!-- FFT in X back to k -->
+    <gadget>
+        <name>FFTX</name>
+        <dll>gadgetron_epi</dll>
+        <classname>FFTXGadget</classname>
+    </gadget>
+
+<!-- This gadget is used in classical EPI for ghost correction: not used in SPEN -->
+<!--<gadget>
+      <name>EPICorr</name>
+      <dll>gadgetron_epi</dll>
+      <classname>EPICorrGadget</classname>
+    </gadget>-->
+
+<!-- This gadget change the Tags to have the EPI segments as repetitions and / the sets by the number of segments -->
+    <gadget>
+      <name>ChangeTagsGadget</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>ChangeTagsGadget</classname>
+    </gadget>
+
+<!--  <gadget>
+      <name>GiveInformation</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>GiveInformationGadget</classname>
+    </gadget>-->
+
+    <gadget>
+        <name>AccTrig</name>
+        <dll>gadgetron_mricore</dll>
+        <classname>AcquisitionAccumulateTriggerGadget</classname>
+        <property><name>trigger_dimension</name><value></value></property>
+        <property><name>sorting_dimension</name><value>set</value></property>
+    </gadget>
+    
+     <gadget>
+        <name>Buff</name>
+        <dll>gadgetron_mricore</dll>
+        <classname>BucketToBufferGadget</classname>
+        <property><name>N_dimension</name><value>repetition</value></property>
+        <property><name>S_dimension</name><value>set</value></property>
+        <property><name>split_slices</name><value>false</value></property>
+        <property><name>ignore_segment</name><value>true</value></property>
+        <property><name>verbose</name><value>true</value></property>        
+    </gadget>
+
+<!--<gadget>
+        <name>GenericReconCheckSize</name>
+        <dll>gadgetron_mricore</dll>
+        <classname>GenericReconCheckSizeGadget</classname>   
+    </gadget> --> 
+
+  <gadget>
+    <name>MatlabBuffer</name>
+    <dll>gadgetron_matlab</dll>
+    <classname>MatlabBufferGadget</classname>
+    <property><name>debug_mode</name><value>true</value></property>
+    <property><name>matlab_path</name><value>/home/imagerie/Dev/gadgetron-ihu/gadgets/matlab</value></property>
+    <property><name>matlab_classname</name><value>SPEN_bufferRecon</value></property>
+  </gadget>
+
+  <gadget>
+    <name>Extract</name>
+    <dll>gadgetron_mricore</dll>
+    <classname>ExtractGadget</classname>
+  </gadget>
+
+    <gadget>
+      <name>AutoScale</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>AutoScaleGadget</classname>
+    </gadget>
+
+    <gadget>
+      <name>FloatToShort</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>FloatToUShortGadget</classname>
+    </gadget>
+
+  <gadget>
+    <name>ImageFinish</name>
+    <dll>gadgetron_mricore</dll>
+    <classname>ImageFinishGadget</classname>
+  </gadget>
+</gadgetronStreamConfiguration>

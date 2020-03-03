@@ -137,7 +137,12 @@ set( gadgetron_mricore_header_files GadgetMRIHeaders.h
                                     ImageAccumulatorGadget.h
                                     ImageArraySendMixin.h
                                     ImageArraySendMixin.hpp 
-                                    ImageResizingGadget.h 
+                                    ImageResizingGadget.h
+                                    RemoveNavigationDataGadget.h
+                                    GiveSizeDataGadget.h
+                                    GiveInformationGadget.h
+                                    ChangeTagsGadget.h
+                                    GenericReconCheckSizeGadget.h 
                                     )
 
 set( gadgetron_mricore_src_files AcquisitionPassthroughGadget.cpp 
@@ -198,6 +203,11 @@ set( gadgetron_mricore_src_files AcquisitionPassthroughGadget.cpp
                                 NoiseSummaryGadget.cpp
                                 ImageAccumulatorGadget.cpp
                                 ImageResizingGadget.cpp
+                               	RemoveNavigationDataGadget.cpp
+                                GiveSizeDataGadget.cpp
+                                GiveInformationGadget.cpp
+                                ChangeTagsGadget.cpp
+                                GenericReconCheckSizeGadget.cpp
         )
 
 set( gadgetron_mricore_config_files
