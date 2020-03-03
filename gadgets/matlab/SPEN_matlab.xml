@@ -117,7 +117,7 @@
     <dll>gadgetron_matlab</dll>
     <classname>MatlabBufferGadget</classname>
     <property><name>debug_mode</name><value>true</value></property>
-    <property><name>matlab_path</name><value>/home/imagerie/Dev/gadgetron-ihu/gadgets/matlab</value></property>
+    <!--<property><name>matlab_path</name><value>/home/imagerie/Dev/gadgetron-ihu/gadgets/matlab</value></property> -->
     <property><name>matlab_classname</name><value>SPEN_bufferRecon</value></property>
   </gadget>
 
