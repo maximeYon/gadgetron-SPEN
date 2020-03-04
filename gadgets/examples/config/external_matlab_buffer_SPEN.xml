@@ -93,11 +93,12 @@
             <configuration/>
         </external> 
 
-   <gadget>
+<!-- This gadget is required only if the matlab output image is complex -->
+  <!-- <gadget>
     <name>Extract</name>
     <dll>gadgetron_mricore</dll>
     <classname>ExtractGadget</classname>
-  </gadget>
+  </gadget> -->
 
     <gadget>
       <name>AutoScale</name>
