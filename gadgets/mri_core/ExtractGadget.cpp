@@ -66,7 +66,7 @@ namespace Gadgetron {
 
     ExtractGadget::ExtractGadget(const Core::Context& context, const Core::GadgetProperties& props)
         : Core::ChannelGadget<Core::Image<std::complex<float>>>(context, props) {
-
+        GDEBUG(" I was there, signed gadgetron " );
         for (int i = 0; i < extract_mask.size(); i++) {
             if (extract_mask[i])
                 image_types.insert(mask_to_imtype.at(i));
