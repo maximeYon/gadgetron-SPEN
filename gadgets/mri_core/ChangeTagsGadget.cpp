@@ -24,10 +24,12 @@ int ChangeTagsGadget::process_config(ACE_Message_Block *mb)
     ISMRMRD::deserialize(mb->rd_ptr(), h);
 
     ISMRMRD::EncodingLimits e_limits = h.encoding[0].encodingLimits;
+	std::cout << " number_of_Nky: " << h.userParameters->userParameterLong[1].value << "\n";
 
     ISMRMRD::EncodingSpace e_space = h.encoding[0].encodedSpace;
     dimensions_.push_back(e_space.matrixSize.x);
-    dimensions_.push_back(e_space.matrixSize.y);
+    //dimensions_.push_back(e_space.matrixSize.y);
+	dimensions_.push_back(h.userParameters->userParameterLong[1].value); // changed to Nky lines read from special card - mo
     dimensions_.push_back(e_space.matrixSize.z);
 
     // GDEBUG(" Base: %d, %d, %d\n", dimensions_[0], dimensions_[1], dimensions_[2]);

@@ -89,7 +89,7 @@
         </external> -->
 
          <external>
-            <execute name="gadgetron.examples.buffer_recon_SPEN" type="matlab"/>
+            <execute name="gadgetron.SPEN.buffer_recon_SPEN" type="matlab"/> 
             <configuration/>
         </external> 
 
@@ -100,11 +100,11 @@
     <classname>ExtractGadget</classname>
   </gadget> -->
 
-    <gadget>
+   <!-- <gadget>
       <name>AutoScale</name>
       <dll>gadgetron_mricore</dll>
       <classname>AutoScaleGadget</classname>
-    </gadget>
+    </gadget> -->
 
     <gadget>
       <name>FloatToShort</name>
