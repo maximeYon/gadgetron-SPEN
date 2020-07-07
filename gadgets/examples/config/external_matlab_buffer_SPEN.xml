@@ -83,15 +83,15 @@
 
 <!-- Connect to a running process on port 18000. -->
 <!-- The configuration is sent to the external process. configuration is left pretty empty. -->
-      <!-- <external> 
+      <external> 
            <connect port="18000"/> 
            <configuration/>
-        </external> -->
+        </external>
 
-         <external>
+        <!-- <external>
             <execute name="gadgetron.SPEN.buffer_recon_SPEN" type="matlab"/> 
             <configuration/>
-        </external> 
+        </external> -->
 
 <!-- This gadget is required only if the matlab output image is complex -->
   <!-- <gadget>
