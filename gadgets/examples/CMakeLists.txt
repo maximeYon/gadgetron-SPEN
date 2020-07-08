@@ -38,5 +38,6 @@ install(FILES
         config/external_matlab_bucket_example.xml
 		config/external_matlab_buffer_example.xml
 		config/external_matlab_buffer_SPEN.xml
+                config/external_matlab_buffer_SPEN_diff.xml
 		config/external_matlab_tiny_example.xml
         DESTINATION ${GADGETRON_INSTALL_CONFIG_PATH} COMPONENT main)
