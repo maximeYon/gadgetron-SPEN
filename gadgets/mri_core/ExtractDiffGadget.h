@@ -1,35 +1,52 @@
-#pragma once
-#include "Gadget.h"
-#include "GadgetMRIHeaders.h"
-#include "gadgetron_mricore_export.h"
-#include "hoNDArray.h"
+#ifndef ExtractDiffGadget_H_
+#define ExtractDiffGadget_H_
 
-#include <bitset>
-#include <complex>
+#include "Gadget.h"
+#include "hoNDArray.h"
+#include "../mri_core/GadgetMRIHeaders.h"
+#include "../mri_core/gadgetron_mricore_export.h"
+
 #include <ismrmrd/ismrmrd.h>
+#include <complex>
+#include <ismrmrd/meta.h>
+
 
 namespace Gadgetron {
 
-    class ExtractDiffGadget : public Core::ChannelGadget<Core::Image<std::complex<float>>>
 
-    {
 
-    public:
-        ExtractDiffGadget(const Core::Context& context, const Core::GadgetProperties& props);
+    class EXPORTGADGETSMRICORE ExtractDiffGadget :
+        public Gadget2<ISMRMRD::ImageHeader, hoNDArray<std::complex<float>>>
 
-    protected:
-        NODE_PROPERTY(
-            extract_mask, std::bitset<4>, "(DEPRECATED) Extract mask, bitmask MAG=1, REAL=2, IMAG=4, PHASE=8", 0);
-        NODE_PROPERTY(extract_magnitude, bool, "Extract absolute value", true);
-        NODE_PROPERTY(extract_real, bool, "Extract real components", false);
-        NODE_PROPERTY(extract_imag, bool, "Extract imaginary component", false);
-        NODE_PROPERTY(extract_phase, bool, "Extract phase", false);
-        NODE_PROPERTY(real_imag_offset, float, "Offset to add to real and imag images", 0.0f);
+     {
 
     public:
-        void process(Core::InputChannel<Core::Image<std::complex<float>>>& in, Core::OutputChannel& out) override;
+    GADGET_DECLARE(ExtractDiffGadget);
+
+    ExtractDiffGadget();
+
+    virtual ~ExtractDiffGadget();
+
+
 
     protected:
-        std::set<ISMRMRD::ISMRMRD_ImageTypes> image_types;
-    };
+    GADGET_PROPERTY(extract_mask, int, "(DEPRECATED) Extract mask, bitmask MAG=1, REAL=2, IMAG=4, PHASE=8", 0);
+    GADGET_PROPERTY(extract_magnitude, bool, "Extract absolute value", true);
+    GADGET_PROPERTY(extract_real, bool, "Extract real components", false);
+    GADGET_PROPERTY(extract_imag, bool, "Extract imaginary component", false);
+    GADGET_PROPERTY(extract_phase, bool, "Extract phase", false);
+    GADGET_PROPERTY(real_imag_offset, float, "Offset to add to real and imag images", 0.0f);
+
+    virtual int process(GadgetContainerMessage <ISMRMRD::ImageHeader> *m1,
+                        GadgetContainerMessage <hoNDArray<std::complex<float> >> *m2) override;
+
+
+    virtual int process_config(ACE_Message_Block* mb) override;
+
+    float minimum_component(const hoNDArray<std::complex<float>>&);
+
+    std::vector<ISMRMRD::ISMRMRD_ImageTypes> image_types;
+};
 }
+
+#endif /* ExtractDiffGadget_H_ */
