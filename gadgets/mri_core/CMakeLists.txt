@@ -21,6 +21,7 @@ set(gadgetron_mricore_header_files GadgetMRIHeaders.h
         readers/MRIImageReader.h
         NoiseAdjustGadget_unoptimized.h
         ExtractGadget.h
+        ExtractDiffGadget.h
         FloatToFixPointGadget.h
         RemoveROOversamplingGadget.h
         CoilReductionGadget.h
@@ -86,6 +87,7 @@ set(gadgetron_mricore_src_files
         readers/MRIImageReader.cpp
         NoiseAdjustGadget_unoptimized.cpp
         ExtractGadget.cpp
+        ExtractDiffGadget.cpp
         FloatToFixPointGadget.cpp
         RemoveROOversamplingGadget.cpp
         CoilReductionGadget.cpp
