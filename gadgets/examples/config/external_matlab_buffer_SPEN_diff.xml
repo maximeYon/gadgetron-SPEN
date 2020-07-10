@@ -81,9 +81,9 @@
 	    <property name="verbose" value="true"/>
         </gadget>
 
-<!-- Connect to a running process on port 18000. -->
-<!-- The configuration is sent to the external process. configuration is left pretty empty. -->
-      <!-- <external> 
+<!-- Debug Mode: Connect to a running process on port 18000. -->
+<!-- The configuration is sent to the external process. configuration is left empty. -->
+       <!--<external> 
            <connect port="18000"/> 
            <configuration/>
         </external> -->
@@ -91,7 +91,7 @@
         <external>
             <execute name="gadgetron.SPEN.buffer_recon_SPEN_diff" type="matlab"/> 
             <configuration/>
-        </external>
+        </external> 
 
 <!-- This gadget is required only if the matlab output image is complex -->
   <!-- <gadget>
@@ -106,19 +106,18 @@
       <classname>AutoScaleGadget</classname>
     </gadget> -->
 
-    <!--<gadget>
-      <name>FloatToShort</name>
-      <dll>gadgetron_mricore</dll>
-      <classname>FloatToUShortGadget</classname>
-    </gadget> -->
-    
-<!-- Replace the Float to short gadget -->
     <gadget>
       <name>ExtractDiff</name>
       <dll>gadgetron_mricore</dll>
       <classname>ExtractDiffGadget</classname>
     </gadget>
 
+    <gadget>
+      <name>FloatToShort</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>FloatToUShortGadget</classname>
+    </gadget>
+    
   <gadget>
     <name>ImageFinish</name>
     <dll>gadgetron_mricore</dll>
