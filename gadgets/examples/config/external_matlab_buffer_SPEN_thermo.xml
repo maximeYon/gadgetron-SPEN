@@ -86,12 +86,12 @@
        <!--<external> 
            <connect port="18000"/> 
            <configuration/>
-        </external> -->
+        </external>-->
 
         <external>
             <execute name="gadgetron.SPEN.buffer_recon_SPEN_thermo" type="matlab"/> 
             <configuration/>
-        </external> 
+        </external>  
 
 <!-- This gadget is required only if the matlab output image is complex -->
   <!-- <gadget>
