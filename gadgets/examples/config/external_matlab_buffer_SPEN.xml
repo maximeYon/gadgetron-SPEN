@@ -25,7 +25,7 @@
             <dll>gadgetron_core_writers</dll>
             <classname>ImageWriter</classname>
         </writer>
-    </writers>
+    </writers> 
 
     <stream>
 
@@ -113,7 +113,7 @@
       <classname>FloatToUShortGadget</classname>
     </gadget>
     
-<!--<gadget>
+    <!--<gadget>
         <name>DicomFinish</name>
         <dll>gadgetron_dicom</dll>
         <classname>DicomFinishGadget</classname>
@@ -123,7 +123,7 @@
     <name>ImageFinish</name>
     <dll>gadgetron_mricore</dll>
     <classname>ImageFinishGadget</classname>
-  </gadget>
+  </gadget> 
 
     </stream>
 </configuration>

@@ -35,11 +35,14 @@ int ExtractDiffGadget::process_config(ACE_Message_Block *mb) {
 int ExtractDiffGadget::process(GadgetContainerMessage<ISMRMRD::ImageHeader> *m1,   GadgetContainerMessage<hoNDArray<float>> *m2) {
 
 
-
      Gadgetron::GadgetContainerMessage<ISMRMRD::MetaContainer>* m3 = new Gadgetron::GadgetContainerMessage<ISMRMRD::MetaContainer>();
 
+       //std::cout << m1->getObjectPtr()->image_series_index << std::endl;
 
-   // std::cout << m1->getObjectPtr()->image_series_index << std::endl;
+	long long imageNum(0);
+	imageNum=m1->getObjectPtr()->image_index;
+	//std::cout <<  "image_index : "<<     m1->getObjectPtr()->image_index<< std::endl;
+	m3->getObjectPtr()->set(GADGETRON_IMAGENUMBER, (long)imageNum);
 
     if (m1->getObjectPtr()->image_series_index==6000)
     {
